@@ -4,8 +4,8 @@ include <dice_pockets.scad>
 box();
 
 module box() {
-  full_box = 120;
-  full_width = 87;
+  full_box = 114;
+  full_width = 85;
   inner_pocket = 52.4;
   inner_width = 30;
   box_height = 31;
@@ -39,8 +39,8 @@ module die_pockets(full_box, full_width, inner_pocket, inner_width, box_height) 
     d20_pocket();
 
   //Corners, D4, D6, D8, D12
-  pocket_edge_x = inner_pocket/2 + (full_box-inner_pocket)/16;
-  pocket_edge_y = inner_width/2 + (full_width-inner_width)/8;
+  pocket_edge_x = inner_pocket/2 + (full_box-inner_pocket)/32;
+  pocket_edge_y = inner_width/2 + (full_width-inner_width)/6;
 
   translate([pocket_edge_x,pocket_edge_y,box_height-d4_pocket_height+.001])
     d4_pocket();

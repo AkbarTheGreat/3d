@@ -92,7 +92,7 @@ module d20_pocket() {
 }
 
 module magnet_divot() {
-  cylinder(h=3, r=6);
+  cylinder(h=3, r=3);
 }
 
 // For debugging, use to draw a blue cross on top of an object
