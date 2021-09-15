@@ -4,4 +4,6 @@ The salient difference between the two is a) by designing in OpenSCAD, it allows
 
 I also took inspiration from https://github.com/charmaur/PolyDiceGenerator/ as a method for generating dice shapes.  In general, this was a reference for how to use the excellent BOSL2 library, but when I wanted standard Chessex-sized die blanks for building the pockets to go into the box, this was what I used to see how other folks were making dice.
 
+Raven logo taken from https://svgsilh.com/image/41248.html
+
 License: CC BY-NC-SA (Creative Commons - Attribution - Non-Commercial - Share Alike) - https://creativecommons.org/licenses/by-nc-sa/4.0/
