@@ -6,15 +6,15 @@ box();
 module box() {
   full_length = 114;
   full_width = 85;
+  full_height = 31;
   mini_pocket_length = 52.4;
   mini_pocket_width = 30;
-  full_height = 31;
   mini_pocket_height = 25.3;
 
   difference() {
     union() {
       box_block(full_length, full_width, full_height-1, true);
-      box_block(full_length-2, full_width-2, full_height, true);
+      box_block(full_length-2.5, full_width-2.5, full_height, true);
     }
     translate([0,0,(full_height-mini_pocket_height)+.001])
         box_block(mini_pocket_length, mini_pocket_width, mini_pocket_height);

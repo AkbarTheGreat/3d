@@ -14,7 +14,13 @@ module box_lid() {
       box_block(full_length-2, full_width-2, 1, false);
     magnet_pockets(full_length, full_width, full_height-.999);
     logo(full_length, full_width);
+    notch(full_width, full_height);
   }
+}
+
+module notch(width, height) {
+  move([0,-width/2+.5,height+1])
+  cuboid([15,3,4], rounding=.5);
 }
 
 module magnet_pockets(length, width, full_height) {
