@@ -1,6 +1,8 @@
 include <box_primitives.scad>
 include <dice_pockets.scad>
 
+high_quality_pockets = false;
+
 box();
 
 module box() {
@@ -29,33 +31,34 @@ module die_pockets(full_length, full_width, mini_pocket_length, mini_pocket_widt
   pocket_shortwise = mini_pocket_width/2 + (full_width-mini_pocket_width)/4;
   translate([0,pocket_shortwise,full_height-d10_pocket_height+.001])
     rotate([0,0,90])
-    d10_pocket();
+    d10_pocket(!high_quality_pockets);
   translate([0,-pocket_shortwise,full_height-d10_pocket_height+.001])
-    rotate([0,0,90])
-    d10_pocket();
+    rotate([0,0,-90])
+    d10_pocket(!high_quality_pockets);
 
   //D20's on each end
   pocket_longwise = mini_pocket_length/2 + (full_length-mini_pocket_length)/4;
   translate([pocket_longwise,0,full_height-d20_pocket_height+.001])
-    d20_pocket();
+    rotate([0,0,180])
+    d20_pocket(!high_quality_pockets);
   translate([-pocket_longwise,0,full_height-d20_pocket_height+.001])
-    d20_pocket();
+    d20_pocket(!high_quality_pockets);
 
   //Corners, D4, D6, D8, D12
   pocket_edge_x = mini_pocket_length/2 + (full_length-mini_pocket_length)/32;
   pocket_edge_y = mini_pocket_width/2 + (full_width-mini_pocket_width)/6;
 
   translate([pocket_edge_x,pocket_edge_y,full_height-d4_pocket_height+.001])
-    d4_pocket();
+    d4_pocket(!high_quality_pockets);
 
   translate([-pocket_edge_x,-pocket_edge_y,full_height-d6_pocket_height+.001])
-    d6_pocket();
+    d6_pocket(!high_quality_pockets);
 
   translate([-pocket_edge_x,pocket_edge_y,full_height-d8_pocket_height+.001])
-    d8_pocket();
+    d8_pocket(!high_quality_pockets);
 
   translate([pocket_edge_x,-pocket_edge_y,full_height-d12_pocket_height+.001])
-    d12_pocket();
+    d12_pocket(!high_quality_pockets);
 }
 
 module magnet_pockets(length, width, full_height) {
