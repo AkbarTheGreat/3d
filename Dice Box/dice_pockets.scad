@@ -13,6 +13,7 @@ d12_pocket_width=24;
 d12_pocket_height=21;
 d20_pocket_width = 22;
 d20_pocket_height = 21;
+dice_pocket_quality_resolution = 0.5;
 
 // Uncomment for visual debug
 //pocket_test();
@@ -24,7 +25,7 @@ module pocket_print() {
   difference() {
     cylinder(h=height, r=15);
     translate([0, 0,height-d10_pocket_height])
-      d10_pocket();
+      d10_pocket(false);
   }
 }
 
@@ -51,7 +52,15 @@ module d6_pocket() {
       d6(size);
 }
 
-module d8_pocket() {
+module d8_pocket(quickpocket=true) {
+  if(quickpocket) {
+    quick_d8_pocket();
+  } else {  
+    quality_d8_pocket();
+  }
+}
+
+module quick_d8_pocket() {
   size = cx_d8_size + .25;
   translate([0,0,1])
     linear_extrude(height=15)
@@ -61,7 +70,42 @@ module d8_pocket() {
     d8(size);
 }
 
-module d10_pocket() {
+module quality_d8_pocket(level=0) {
+  size = cx_d8_size + .25;
+  for(step=[0:dice_pocket_quality_resolution:size]) {
+    translate([0,0,step])
+    linear_extrude(dice_pocket_quality_resolution)
+      d8_collated_slice(size, step);
+  }
+}
+
+module d8_collated_slice(size, level) {
+   if(level == 0) {
+    d8_slice(size, level);
+  } else if(level < size) {
+    d8_slice(size, level);
+    d8_collated_slice(size, level-dice_pocket_quality_resolution);
+  } else {
+    d8_slice(size, level);
+    d8_collated_slice(size, level-dice_pocket_quality_resolution);
+  }
+}
+
+module d8_slice(size, level) {
+  projection(cut=true)
+    translate([0,0,-level])
+    d8(size+.25);
+}
+
+module d10_pocket(quickpocket=true) {
+  if(quickpocket) {
+    quick_d10_pocket();
+  } else {  
+    quality_d10_pocket();
+  }
+}
+
+module quick_d10_pocket() {
   size = cx_d10_size + .25;
   translate([0,0,.5])
     linear_extrude(height=16.5)
@@ -69,6 +113,33 @@ module d10_pocket() {
       d10(size+.25);
   color("red")
     d10(size);
+}
+
+module quality_d10_pocket(level=0) {
+  size = cx_d10_size + .25;
+  for(step=[0:dice_pocket_quality_resolution:size]) {
+    translate([0,0,step])
+    linear_extrude(dice_pocket_quality_resolution)
+      d10_collated_slice(size, step);
+  }
+}
+
+module d10_collated_slice(size, level) {
+  if(level == 0) {
+    d10_slice(size, level);
+  } else if(level < size) {
+    d10_slice(size, level);
+    d10_collated_slice(size, level-dice_pocket_quality_resolution);
+  } else {
+    d10_slice(size, level);
+    d10_collated_slice(size, level-dice_pocket_quality_resolution);
+  }
+}
+
+module d10_slice(size, level) {
+  projection(cut=true)
+    translate([0,0,-level])
+    d10(size+.25);
 }
 
 module d12_pocket() {

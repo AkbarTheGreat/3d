@@ -6,7 +6,7 @@ box_lid();
 module box_lid() {
   full_length = 114;
   full_width = 85;
-  full_height = 9;
+  full_height = 8;
 
   difference() {
     box_block(full_length, full_width, full_height, false);
@@ -42,7 +42,7 @@ module logo(length, width) {
   target_height = 50;
   scale_factor = target_height/base_height;
   translate([-base_width*scale_factor/2,-base_height*scale_factor/2,-.001])
-    linear_extrude(1)
+    linear_extrude(1.25)
     scale([scale_factor, scale_factor, 1])
       import("./raven.svg");
 }
