@@ -1,7 +1,7 @@
 include <box_primitives.scad>
 include <dice_pockets.scad>
 
-high_quality_pockets = false;
+high_quality_pockets = true;
 
 box();
 
