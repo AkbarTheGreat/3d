@@ -29,7 +29,7 @@ module pocket_print() {
   }
 }
 
-module d4_pocket() {
+module d4_pocket(quickpocket=true) {
   // Rotate this pocket so that it's along more typical axes
   size = cx_d4_size + .25;
   rotate([0, 0, -45]) {
@@ -42,7 +42,7 @@ module d4_pocket() {
   }
 }
 
-module d6_pocket() {
+module d6_pocket(quickpocket=true) {
   size = cx_d6_size + .25;
   translate([0,0,0])
     linear_extrude(height=16)
@@ -75,7 +75,7 @@ module quality_d8_pocket(level=0) {
   total_height = 16;
   slice_top = size*.83;
   translate([0,0,slice_top-.001])
-    linear_extrude(height=total_height-slice_top)
+    linear_extrude(height=total_height-slice_top+dice_pocket_quality_resolution+.001)
     projection()
       d8(size+.25);
   for(step=[0:dice_pocket_quality_resolution:slice_top]) {
@@ -126,7 +126,7 @@ module quality_d10_pocket(level=0) {
   total_height = 17;
   slice_top = size*.65;
   translate([0,0,slice_top-dice_pocket_quality_resolution])
-    linear_extrude(height=total_height-slice_top+dice_pocket_quality_resolution)
+    linear_extrude(height=total_height-slice_top+dice_pocket_quality_resolution+.001)
     projection()
       d10(size+.25);
   for(step=[0:dice_pocket_quality_resolution:slice_top]) {
@@ -177,7 +177,7 @@ module quality_d12_pocket(level=0) {
   total_height = 21;
   slice_top = size*.62;
   translate([0,0,slice_top-.001])
-    linear_extrude(height=total_height-slice_top)
+    linear_extrude(height=total_height-slice_top+dice_pocket_quality_resolution+.001)
     projection()
       d12(size+.25);
   for(step=[0:dice_pocket_quality_resolution:slice_top]) {
@@ -228,7 +228,7 @@ module quality_d20_pocket(level=0) {
   total_height = 21;
   slice_top = size*.6;
   translate([0,0,slice_top-.001])
-    linear_extrude(height=total_height-slice_top)
+    linear_extrude(height=total_height-slice_top+dice_pocket_quality_resolution+.001)
     projection()
       d20(size+.25);
   for(step=[0:dice_pocket_quality_resolution:slice_top]) {
