@@ -3,9 +3,35 @@ include <dice_pockets.scad>
 
 high_quality_pockets = false;
 
-box();
+box_with_figure();
 
-module box() {
+module box_with_4d10() {
+  full_length = 114;
+  full_width = 85;
+  full_height = 31;
+  inside_buffer_length = 52.4;
+  inside_buffer_width = 30;
+
+  difference() {
+    union() {
+      box_block(full_length, full_width, full_height-1, true);
+      box_block(full_length-2.5, full_width-2.5, full_height, true);
+    }
+    
+    translate([12,0,full_height-d10_pocket_height+.001])
+    rotate([0,0,0])
+    d10_pocket(!high_quality_pockets);
+
+    translate([-12,0,full_height-d10_pocket_height+.001])
+    rotate([0,0,180])
+    d10_pocket(!high_quality_pockets);
+    
+    die_pockets(full_length, full_width, inside_buffer_length, inside_buffer_width, full_height);
+    magnet_pockets(full_length, full_width, full_height);
+  }
+}
+
+module box_with_figure() {
   full_length = 114;
   full_width = 85;
   full_height = 31;

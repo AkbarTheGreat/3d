@@ -18,6 +18,15 @@ dice_pocket_quality_resolution = 0.25;
 // Uncomment for visual debug
 //pocket_test();
 //pocket_print();
+//magnet_print();
+
+module magnet_print() {
+  difference() {
+    cylinder(4, r=5);
+    translate([0,0,1.001])
+    magnet_divot();
+  }
+}
 
 // Make a single cylinder with a pocket for a given die.  Just change the pocket_height and pocket() module call to print a different test pocket.
 module pocket_print() {
@@ -257,7 +266,7 @@ module d20_slice(size, level) {
 }
 
 module magnet_divot() {
-  cylinder(h=3, r=3);
+  cylinder(h=3, r=3.1);
 }
 
 // For debugging, use to draw a blue cross on top of an object
