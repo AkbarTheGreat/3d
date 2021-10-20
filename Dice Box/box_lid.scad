@@ -13,8 +13,9 @@ module box_lid() {
     translate([0,0,full_height-.999])
       box_block(full_length-2, full_width-2, 1, false);
     magnet_pockets(full_length, full_width, full_height-.999);
-    logo(full_length, full_width);
     notch(full_width, full_height);
+    fire_logo(full_length, full_width);
+    //raven_logo(full_length, full_width);
   }
 }
 
@@ -36,7 +37,18 @@ module magnet_pockets(length, width, full_height) {
   }
 }
 
-module logo(length, width) {
+module fire_logo(length, width) {
+  base_width = 130/4;
+  base_height = 156/4;
+  target_height = 75;
+  scale_factor = target_height/base_height;
+  rotate([0,0,90])
+    translate([0,0,-.001])
+    linear_extrude(1.25)
+    scale([scale_factor, scale_factor, 1])
+      import("./fire.svg", center=true, dpi=96);
+}
+module raven_logo(length, width) {
   base_width = 1600/4;
   base_height = 1474/4;
   target_height = 50;

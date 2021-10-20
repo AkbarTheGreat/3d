@@ -11,6 +11,13 @@ cx_d10_size = 16;
 cx_d12_size = 20;
 cx_d20_size = 20;
 
+// Sizes to match a larger set of dice I own which are not chessex
+non_cx_d4_size = 23;
+non_cx_d6_size = 17;
+non_cx_d8_size = 19;
+non_cx_d10_size = 17;
+// The d12 and d20 are about the same size as chessex dice, so there's no change there.
+
 // Uncomment for test build to make sure the size of dice line up with standard Chessex dice
 //dice_sample();
 

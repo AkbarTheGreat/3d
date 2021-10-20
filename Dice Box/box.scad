@@ -2,15 +2,28 @@ include <box_primitives.scad>
 include <dice_pockets.scad>
 
 high_quality_pockets = false;
+full_length = 114;
+full_width = 85;
+full_height = 25;
+inside_buffer_length = 52.4;
+inside_buffer_width = 30;
 
-box_with_figure();
+box_with_4d10();
+
+// This doesn't work great for high quality pockets, because it has to be ~90% of the pocket to clear the molding for the d12.  If you went with the low quality pockets, it'd work.
+// (It does need more work, though)
+module box_with_4d10_tiered() {
+  bottom_height = full_height * .45;
+  // Top
+  translate([0,0,-bottom_height])
+  difference() {
+    box_with_4d10();
+    translate([0,0,-.001])
+      box_block(full_length, full_width*1.1, bottom_height, false);
+  }
+}
 
 module box_with_4d10() {
-  full_length = 114;
-  full_width = 85;
-  full_height = 31;
-  inside_buffer_length = 52.4;
-  inside_buffer_width = 30;
 
   difference() {
     union() {
@@ -32,11 +45,9 @@ module box_with_4d10() {
 }
 
 module box_with_figure() {
-  full_length = 114;
-  full_width = 85;
-  full_height = 31;
-  mini_pocket_length = 52.4;
-  mini_pocket_width = 30;
+  full_height = 25;
+  mini_pocket_length = inside_buffer_length;
+  mini_pocket_width = inside_buffer_width;
   mini_pocket_height = 25.3;
 
   difference() {
