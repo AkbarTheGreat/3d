@@ -15,13 +15,17 @@ d20_pocket_width = 22;
 d20_pocket_height = 21;
 
 lg_d4_pocket_width = 24;
-lg_d4_pocket_height = 19;
+lg_d4_pocket_height = d4_pocket_height;
 lg_d6_pocket_width = 17.5;
 lg_d6_pocket_height = 18;
 lg_d8_pocket_width=23;
 lg_d8_pocket_height=17;
 lg_d10_pocket_width=24.5;
 lg_d10_pocket_height=17.3;
+lg_d12_pocket_width=d12_pocket_width;
+lg_d12_pocket_height=d12_pocket_height;
+lg_d20_pocket_width = d20_pocket_width;
+lg_d20_pocket_height = d20_pocket_height;
 
 dice_pocket_quality_resolution = 0.25;
 
