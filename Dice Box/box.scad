@@ -1,7 +1,7 @@
 include <box_primitives.scad>
 include <dice_pockets.scad>
 
-high_quality_pockets = false;
+high_quality_pockets = true;
 full_length = 114;
 full_width = 85;
 full_height = 25;
@@ -9,19 +9,6 @@ inside_buffer_length = 52.4;
 inside_buffer_width = 30;
 
 large_dice_box();
-
-// This doesn't work great for high quality pockets, because it has to be ~90% of the pocket to clear the molding for the d12.  If you went with the low quality pockets, it'd work.
-// (It does need more work, though)
-module box_with_4d10_tiered() {
-  bottom_height = full_height * .45;
-  // Top
-  translate([0,0,-bottom_height])
-  difference() {
-    box_with_4d10();
-    translate([0,0,-.001])
-      box_block(full_length, full_width*1.1, bottom_height, false);
-  }
-}
 
 module large_dice_box() {
   difference() {
@@ -44,6 +31,32 @@ module large_dice_box() {
     translate([37,0,full_height-lg_d6_pocket_height+.001])
     large_d6_pocket(!high_quality_pockets);
     
+    magnet_pockets(full_length, full_width, full_height);
+  }
+}
+
+module box_with_3d8() {
+  difference() {
+    union() {
+      box_block(full_length, full_width, full_height-1, true);
+      box_block(full_length-2.5, full_width-2.5, full_height, true);
+    }
+    
+    translate([12,0,full_height-d8_pocket_height+.001])
+    rotate([0,0,16])
+    d8_pocket(!high_quality_pockets);
+
+    translate([-12,0,full_height-d8_pocket_height+.001])
+    rotate([0,0,74])
+    d8_pocket(!high_quality_pockets);
+    
+    die_pockets(full_length, full_width, inside_buffer_length, inside_buffer_width, full_height);
+
+    pocket_longwise = inside_buffer_length/2 + (full_length-inside_buffer_length)/4;
+    translate([pocket_longwise,0,full_height-d20_pocket_height+.001])
+    rotate([0,0,180])
+      d20_pocket(!high_quality_pockets);
+
     magnet_pockets(full_length, full_width, full_height);
   }
 }
@@ -96,6 +109,19 @@ module box_with_figure() {
       d20_pocket(!high_quality_pockets);
 
     magnet_pockets(full_length, full_width, full_height);
+  }
+}
+
+// This doesn't work great for high quality pockets, because it has to be ~90% of the pocket to clear the molding for the d12.  If you went with the low quality pockets, it'd work.
+// (It does need more work, though)
+module box_with_4d10_tiered() {
+  bottom_height = full_height * .45;
+  // Top
+  translate([0,0,-bottom_height])
+  difference() {
+    box_with_4d10();
+    translate([0,0,-.001])
+      box_block(full_length, full_width*1.1, bottom_height, false);
   }
 }
 

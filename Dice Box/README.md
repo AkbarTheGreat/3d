@@ -7,5 +7,6 @@ I also took inspiration from https://github.com/charmaur/PolyDiceGenerator/ as a
 Raven logo taken from https://svgsilh.com/image/41248.html
 Fire logo taken from https://freesvg.org/vector-drawing-of-fire-pictogram
 Spider logo taken from https://freesvg.org/spider-silhouette
+Medic's cross logo taken from https://freesvg.org/first-aid-sign
 
 License: CC BY-NC-SA (Creative Commons - Attribution - Non-Commercial - Share Alike) - https://creativecommons.org/licenses/by-nc-sa/4.0/
