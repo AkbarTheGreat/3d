@@ -1,4 +1,4 @@
 # 3d
 3d models designed in OpenSCAD.
 
-Nothing super fancy, everything in here is licensed under Creative Commons.  (See the License file for details)
+License: CC BY-NC-SA (Creative Commons - Attribution - Non-Commercial - Share Alike) - https://creativecommons.org/licenses/by-nc-sa/4.0/
