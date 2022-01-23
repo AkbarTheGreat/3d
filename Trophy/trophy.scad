@@ -7,7 +7,7 @@ render_person = "text-only"; // ["deb", "text-only"]
 // Trophy text
 trophy_text = ["Sample","Text"];
 // Text size
-text_size = 10;
+text_size = 15;
 
 if (render_person == "deb") {
   deb_trophy();
@@ -44,6 +44,8 @@ module plain_trophy() {
 }
 
 module trophy_base() {
+  translate([0,0,base_height+12.5])
+  cuboid([200,100,25], edges = [[0,0,1,1],[0,0,1,1],[1,1,1,1]], chamfer=2);
   translate([0,0,base_height/2])
   cuboid([250,150,base_height], chamfer=2);
 }
@@ -51,14 +53,14 @@ module trophy_base() {
 module trophy_body() {
   translate([0,0,base_height])
     rotate_extrude($fn=200)
-      translate([0.009,0,0])
+      translate([-0.31,0,0])
         import("trophy_profile.svg");
 }
 
 module trophy_arms() {
-  x_move = 32;
+  x_move = 29.5;
   z_move = 65+base_height;
-  y_rotate = 18;
+  y_rotate = 19;
 
   translate([x_move,0,z_move])
     rotate([90,y_rotate,0])
