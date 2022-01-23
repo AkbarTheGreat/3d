@@ -3,18 +3,29 @@ include <../scad_lib/BOSL2/std.scad>
 // Scale to render trophy at
 trophy_scale = .75;
 // Trophy variant 
-render_person = "deb"; // ["deb", "nick"]
+render_person = "text-only"; // ["deb", "text-only"]
 // Trophy text
-trophy_text = ["Debbiest","Deb"];
+trophy_text = ["Sample","Text"];
 // Text size
 text_size = 10;
 
 if (render_person == "deb") {
   deb_trophy();
 }
-if (render_person == "nick") {
-  trophy_title();
+if (render_person == "text-only") {
+  text_only_trophy();
 }
+
+module text_only_trophy() {
+  scale([trophy_scale, trophy_scale, trophy_scale]) {
+    difference() {
+      plain_trophy();
+      trophy_title();
+    }
+  }
+}
+
+base_height = 60;
 
 module deb_trophy() {
   scale([trophy_scale, trophy_scale, trophy_scale]) {
@@ -25,8 +36,6 @@ module deb_trophy() {
     }
   }
 }
-
-base_height = 60;
 
 module plain_trophy() {
   trophy_base();
