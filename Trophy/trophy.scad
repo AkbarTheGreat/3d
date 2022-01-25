@@ -80,7 +80,7 @@ module trophy_arm() {
 module deb_art() {
     translate([-70,-39,28])
     rotate([90,00,0])
-    linear_extrude(1.5)
+    linear_extrude(2)
       import("deb-art.svg");
 }
 
@@ -88,7 +88,7 @@ module trophy_title(x_offset=-60) {
   height = 25 + (text_size + 2) *(len(trophy_text)-1) + (base_height - (text_size + 2) * len(trophy_text))/2;
   translate([x_offset,-39,height])
   rotate([90,00,0])
-  linear_extrude(1.5)
+  linear_extrude(2)
   union(){
     for (i = [0 : len(trophy_text)-1]) {
       translate([0 , -i * (text_size + 2), 0 ]) text(trophy_text[i], text_size);

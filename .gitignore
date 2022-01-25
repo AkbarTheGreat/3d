@@ -1,3 +1,4 @@
 # Ignore STL files as a rule, since they're output from the scad files.
 **.stl
 Trophy/deb-art.svg
+Trophy/trophy.json
