@@ -41,13 +41,13 @@ module deb_trophy() {
 
 module plain_trophy() {
   trophy_base();
-  //trophy_body();
-  //trophy_arms();
+  trophy_body();
+  trophy_arms();
 }
 
 module trophy_base() {
-//  translate([0,0,base_height+12.5])
-//  cuboid([150,80,25], edges = [[0,0,1,1],[0,0,1,1],[1,1,1,1]], chamfer=2);
+  translate([0,0,base_height+12.5])
+  cuboid([150,80,25], edges = [[0,0,1,1],[0,0,1,1],[1,1,1,1]], chamfer=2);
   translate([0,0,base_height/2])
   cuboid([180,120,base_height], chamfer=2);
 }
