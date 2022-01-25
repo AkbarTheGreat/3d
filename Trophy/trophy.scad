@@ -45,9 +45,9 @@ module plain_trophy() {
 
 module trophy_base() {
   translate([0,0,12.5])
-  cuboid([180,120,25], edges = [[0,0,1,1],[0,0,1,1],[1,1,1,1]], chamfer=2);
+  cuboid([180,120,25], chamfer=2);
   translate([0,0,base_height/2+25])
-  cuboid([150,80,base_height], chamfer=2);
+  cuboid([150,80,base_height], edges = [[0,0,1,1],[0,0,1,1],[1,1,1,1]], chamfer=2);
 }
 
 module trophy_body() {
