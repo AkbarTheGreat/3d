@@ -19,13 +19,11 @@ module text_only_trophy() {
 }
 
 base_height = 60;
-text_x_adjust = -30;
 
 if (render_person == "deb") {
   deb_trophy();
 }
 if (render_person == "text-only") {
-  text_x_adjust = -30;
   text_only_trophy();
 }
 
@@ -34,7 +32,7 @@ module deb_trophy() {
     difference() {
       plain_trophy();
       deb_art();
-      trophy_title();
+      trophy_title(x_offset=-35);
     }
   }
 }
@@ -46,10 +44,10 @@ module plain_trophy() {
 }
 
 module trophy_base() {
-  translate([0,0,base_height+12.5])
-  cuboid([150,80,25], edges = [[0,0,1,1],[0,0,1,1],[1,1,1,1]], chamfer=2);
-  translate([0,0,base_height/2])
-  cuboid([180,120,base_height], chamfer=2);
+  translate([0,0,12.5])
+  cuboid([180,120,25], edges = [[0,0,1,1],[0,0,1,1],[1,1,1,1]], chamfer=2);
+  translate([0,0,base_height/2+25])
+  cuboid([150,80,base_height], chamfer=2);
 }
 
 module trophy_body() {
@@ -80,15 +78,15 @@ module trophy_arm() {
 }
 
 module deb_art() {
-    translate([-80,-59,3])
+    translate([-70,-39,28])
     rotate([90,00,0])
     linear_extrude(1.5)
       import("deb-art.svg");
 }
 
-module trophy_title() {
-  height = (text_size + 2) *(len(trophy_text)-1) + (base_height - (text_size + 2) * len(trophy_text))/2;
-  translate([-30,-59,height])
+module trophy_title(x_offset=-60) {
+  height = 25 + (text_size + 2) *(len(trophy_text)-1) + (base_height - (text_size + 2) * len(trophy_text))/2;
+  translate([x_offset,-39,height])
   rotate([90,00,0])
   linear_extrude(1.5)
   union(){
