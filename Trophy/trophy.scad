@@ -3,7 +3,7 @@ include <../scad_lib/BOSL2/std.scad>
 // Scale to render trophy at
 trophy_scale = .75;
 // Trophy variant 
-render_person = "text-only"; // ["deb", "text-only"]
+trophy_variant = "text-only"; // ["text-only", "deb", "guitar"]
 // Trophy text
 trophy_text = ["Sample","Text"];
 // Text size
@@ -20,10 +20,13 @@ module text_only_trophy() {
 
 base_height = 60;
 
-if (render_person == "deb") {
+if (trophy_variant == "deb") {
   deb_trophy();
 }
-if (render_person == "text-only") {
+if (trophy_variant == "guitar") {
+  guitar_trophy();
+}
+if (trophy_variant == "text-only") {
   text_only_trophy();
 }
 
@@ -33,6 +36,20 @@ module deb_trophy() {
       plain_trophy();
       deb_art();
       trophy_title(x_offset=-35);
+    }
+  }
+}
+
+module guitar_trophy() {
+  scale([trophy_scale, trophy_scale, trophy_scale]) {
+    difference() {
+      union() {
+        trophy_base();
+        translate([0,0,87+base_height])
+          rotate([0,-90,90])
+            import("guitar_detailed_final.stl");
+      }
+      trophy_title();
     }
   }
 }
