@@ -1,3 +1,6 @@
 [submodule "scad_lib/BOSL2"]
 	path = scad_lib/BOSL2
 	url = https://github.com/revarbat/BOSL2.git
+[submodule "thirdparty/SBC_Case_Builder"]
+	path = thirdparty/SBC_Case_Builder
+	url = https://github.com/hominoids/SBC_Case_Builder.git
