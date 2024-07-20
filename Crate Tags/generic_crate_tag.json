@@ -1,0 +1,27 @@
+{
+    "parameterSets": {
+        "penny": {
+            "dog": "PENNY",
+            "font": "Verdana",
+            "font_size": "25",
+            "height": "5"
+        },
+        "cleo": {
+            "dog": "CLEO",
+            "font": "Verdana",
+            "font_size": "25",
+            "height": "5"
+        },
+        "archie": {
+            "dog": "ARCHIE",
+            "font": "Verdana",
+            "font_size": "25",
+            "height": "5"
+        }
+    },
+    "fileFormatVersion": "1",
+    "parameterSets": "",
+    "parameterSets": "",
+    "parameterSets": "",
+    "parameterSets": ""
+}
