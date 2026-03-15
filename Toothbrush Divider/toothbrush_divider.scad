@@ -2,12 +2,13 @@ include <../scad_lib/BOSL2/std.scad>
 include <../scad_lib/BOSL2/joiners.scad>
 
 // Width of divider
-divider_width = 5;
+divider_width = .5;
 // Length of tray
-tray_length = 250;
-tray_base_length = 215;
+tray_length = 255;
+tray_base_length = 197;
 // Height of tray to rim
-tray_height = 24;
+tray_height = 26;
+dovetail_slop = .1;
 
 $fn = 128;
 
@@ -22,7 +23,7 @@ module tray_cross_section() {
 
   attachable(size=size) {
     diff("remove")
-      cuboid(size, anchor=BOTTOM, chamfer=.25) {
+      cuboid(size, anchor=BOTTOM) {
         tag("remove")
           position(RIGHT + FRONT)
             cuboid(
@@ -40,9 +41,8 @@ module tray_cross_section() {
 module tray_part_a() {
   tray_cross_section()
     up(divider_width / 2)
-      right(.1)
-        attach(LEFT)
-          dovetail("male", slide=divider_width, width=10, height=5);
+      attach(LEFT)
+        dovetail("male", slide=divider_width, width=10, height=5, $slop=dovetail_slop);
   ;
 }
 
@@ -52,6 +52,6 @@ module tray_part_b() {
       up(divider_width / 2)
         tag("dovetail")
           attach(LEFT)
-            dovetail("female", slide=divider_width, width=10, height=5);
+            dovetail("female", slide=divider_width, width=10, height=5, $slop=dovetail_slop);
   ;
 }
